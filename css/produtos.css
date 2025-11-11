@@ -97,6 +97,8 @@ body {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
+
+
 .btn-detalhes:hover {
   background: #10d856;
   transform: translateY(-2px);
