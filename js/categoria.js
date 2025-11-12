@@ -15,24 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
       nome: "Tintas para Exterior",
       produtos: [
         { nome: "Tinta Epóxi Exterior - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta4.jpg" },
-        { nome: "Tinta Impermeável - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta5.jpg" },
-        { nome: "Tinta Premium Exterior - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta6.jpg" }
+        { nome: "Tinta Impermeável - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta1.jpg" },
+        { nome: "Tinta Premium Exterior - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta2.jpg" }
       ]
     },
     {
       nome: "Tintas Especiais",
       produtos: [
-        { nome: "Tinta Magnética - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta7.jpg" },
-        { nome: "Tinta Lousa - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta8.jpg" },
-        { nome: "Tinta Glow - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta9.jpg" }
+        { nome: "Tinta Magnética - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta3.jpg" },
+        { nome: "Tinta Lousa - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta4.jpg" },
+        { nome: "Tinta Glow - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta1.jpg" }
       ]
     },
     {
       nome: "Acessórios de Pintura",
       produtos: [
-        { nome: "Kit Rolo Profissional", preco: 89.9, imagem: "assets/produtos/acessorio1.jpg" },
-        { nome: "Pincel Multiuso", preco: 49.9, imagem: "assets/produtos/acessorio2.jpg" },
-        { nome: "Bandeja de Pintura", preco: 59.9, imagem: "assets/produtos/acessorio3.jpg" }
+        { nome: "Kit Rolo Profissional", preco: 89.9, imagem: "assets/produtos/tinta2.jpg" },
+        { nome: "Pincel Multiuso", preco: 49.9, imagem: "assets/produtos/tinta3.jpg" },
+        { nome: "Bandeja de Pintura", preco: 59.9, imagem: "assets/produtos/tinta4.jpg" }
       ]
     }
   ];
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="produtos-grid">
         ${categoria.produtos.map(produto => `
           <div class="produto-card" data-produto='${JSON.stringify(produto)}'>
-            <img src="${produto.imagem}" alt="${produto.nome}">
+            <img src="${produto.imagem}" alt="${produto.nome}" width="150" height="150">
             <h3>${produto.nome}</h3>
             <span>R$ ${produto.preco.toFixed(2).replace('.', ',')}</span>
           </div>
