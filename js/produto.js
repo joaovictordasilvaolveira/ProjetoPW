@@ -71,3 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const produto = JSON.parse(localStorage.getItem("produtoSelecionado"));
+  if (!produto) return;
+
+  document.querySelector(".produto-nome").textContent = produto.nome;
+  document.querySelector(".produto-preco").textContent = `R$ ${produto.preco.toFixed(2).replace('.', ',')}`;
+  document.querySelector(".produto-imagem").src = produto.imagem;
+});

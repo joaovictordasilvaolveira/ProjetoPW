@@ -1,63 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const categoriaSelecionada = localStorage.getItem("categoriaSelecionada");
-  const tituloCategoria = document.getElementById("titulo-categoria");
-  const listaProdutos = document.getElementById("lista-produtos");
+  const listaCategorias = document.getElementById("lista-categorias");
 
-  // Exibe o nome da categoria
-  tituloCategoria.textContent = categoriaSelecionada;
-
-  // Produtos simulados
-  const produtos = [
+  // Dados simulados (poderiam vir de um JSON futuramente)
+  const categorias = [
     {
-      nome: "Tinta Acrílica Premium",
-      descricao: "Alta durabilidade e acabamento perfeito.",
-      preco: 89.9,
-      categoria: "Tintas para Interior",
-      imagem: "assets/produtos/tinta1.jpg"
+      nome: "Tintas para Interior",
+      produtos: [
+        { nome: "Tinta Acrílica Premium - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta1.jpg" },
+        { nome: "Tinta Suvinil Seda - 3,6L", preco: 132.9, imagem: "assets/produtos/tinta2.jpg" },
+        { nome: "Tinta Coral Fosca - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta3.jpg" }
+      ]
     },
     {
-      nome: "Tinta Fosca Interior",
-      descricao: "Ideal para ambientes internos com acabamento suave.",
-      preco: 75.5,
-      categoria: "Tintas para Exterior",
-      imagem: "assets/produtos/tinta2.jpg"
+      nome: "Tintas para Exterior",
+      produtos: [
+        { nome: "Tinta Epóxi Exterior - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta4.jpg" },
+        { nome: "Tinta Impermeável - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta5.jpg" },
+        { nome: "Tinta Premium Exterior - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta6.jpg" }
+      ]
     },
     {
-      nome: "Tinta Brilhante Exterior",
-      descricao: "Resistência máxima ao sol e chuva.",
-      preco: 95.0,
-      categoria: "Tintas Especiais",
-      imagem: "assets/produtos/tinta3.jpg"
+      nome: "Tintas Especiais",
+      produtos: [
+        { nome: "Tinta Magnética - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta7.jpg" },
+        { nome: "Tinta Lousa - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta8.jpg" },
+        { nome: "Tinta Glow - 3,6L", preco: 129.9, imagem: "assets/produtos/tinta9.jpg" }
+      ]
     },
     {
-      nome: "Tinta Especial Texturizada",
-      descricao: "Textura diferenciada para paredes modernas.",
-      preco: 110.0,
-      categoria: "Acessórios de Pintura",
-      imagem: "assets/produtos/tinta4.jpg"
+      nome: "Acessórios de Pintura",
+      produtos: [
+        { nome: "Kit Rolo Profissional", preco: 89.9, imagem: "assets/produtos/acessorio1.jpg" },
+        { nome: "Pincel Multiuso", preco: 49.9, imagem: "assets/produtos/acessorio2.jpg" },
+        { nome: "Bandeja de Pintura", preco: 59.9, imagem: "assets/produtos/acessorio3.jpg" }
+      ]
     }
   ];
 
-  // Filtra os produtos da categoria
-  const produtosFiltrados = produtos.filter(
-    (produto) => produto.categoria === categoriaSelecionada
-  );
+  // Gera as seções de categoria dinamicamente
+  listaCategorias.innerHTML = categorias.map(categoria => `
+    <section class="categoria-bloco">
+      <h2>${categoria.nome}</h2>
+      <div class="produtos-grid">
+        ${categoria.produtos.map(produto => `
+          <div class="produto-card" data-produto='${JSON.stringify(produto)}'>
+            <img src="${produto.imagem}" alt="${produto.nome}">
+            <h3>${produto.nome}</h3>
+            <span>R$ ${produto.preco.toFixed(2).replace('.', ',')}</span>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `).join('');
 
-  // Renderiza os produtos
-  if (produtosFiltrados.length === 0) {
-    listaProdutos.innerHTML = `<p>Nenhum produto encontrado nesta categoria.</p>`;
-  } else {
-    listaProdutos.innerHTML = produtosFiltrados
-      .map(
-        (p) => `
-        <div class="produto-card">
-          <img src="${p.imagem}" alt="${p.nome}">
-          <h3>${p.nome}</h3>
-          <p>${p.descricao}</p>
-          <span>R$ ${p.preco.toFixed(2)}</span>
-        </div>
-      `
-      )
-      .join("");
-  }
+  // Clique em produto → salva e vai pra produto.html
+  document.querySelectorAll(".produto-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const produto = JSON.parse(card.dataset.produto);
+      localStorage.setItem("produtoSelecionado", JSON.stringify(produto));
+      window.location.href = "produto.html";
+    });
+  });
 });
