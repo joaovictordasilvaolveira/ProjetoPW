@@ -3,10 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtotalEl = document.getElementById('subtotal');
     const totalEl = document.getElementById('total');
     const finalizarBtn = document.getElementById('finalizar-compra');
-
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
     const cartCountEl = document.getElementById('cart-count');
+
 
 function atualizarContadorCarrinho() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
@@ -77,10 +76,12 @@ function atualizarContadorCarrinho() {
     });
 
     finalizarBtn.addEventListener('click', () => {
-        const usuarioLogado = JSON.parse(localStorage.getItem('user') || localStorage.getItem('usuarios') || '{}');
+        const usuarioLogado = JSON.parse(localStorage.getItem('user'));
+        
 
-        if (!usuarioLogado || !usuarioLogado.id) {
-            alert('Você precisa estar logado para finalizar a compra.');
+        if (!usuarioLogado || !usuarioLogado.logado) {
+            alert('⚠️ Você precisa estar logado para finalizar a compra.');
+            window.location.href = 'login.html';
             return;
         }
 
@@ -102,7 +103,7 @@ function atualizarContadorCarrinho() {
         localStorage.setItem('pedidos', JSON.stringify(pedidos));
 
         localStorage.removeItem('carrinho');
-        alert('Compra finalizada com sucesso!');
+        alert("🎉 Sua compra foi realizada com sucesso! Obrigado por confiar na ColorUp 💚");
         window.location.href = 'index.html';
     });
 

@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    alert("Produto adicionado ao carrinho! 🛒✅");
 
     const cartCountEl = document.getElementById('cart-count');
     if (cartCountEl) {
