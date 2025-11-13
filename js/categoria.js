@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const listaCategorias = document.getElementById("lista-categorias");
 
+    if (!logado) {
+        alert("Você precisa estar logado para ver os detalhes do produto.");
+        window.location.href = "login.html";
+        return;
+      }
   // Dados simulados (poderiam vir de um JSON futuramente)
   const categorias = [
     {

@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const logado = userData && userData.logado;
 
   // ===== VERIFICA LOGIN =====
-  if (!logado) {
-    alert("Você precisa estar logado para visualizar os produtos.");
-    window.location.href = "login.html";
-    return;
-  }
+  // if (!logado) {
+  //   alert("Você precisa estar logado para visualizar os produtos.");
+  //   window.location.href = "login.html";
+  //   return;
+  // }
 
   // ===== ELEMENTOS DA TELA =====
   const img = document.getElementById("produto-img");
