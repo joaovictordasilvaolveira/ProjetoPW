@@ -71,21 +71,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== USUÁRIO LOGADO =====
-  else {
-    avatarDiv.textContent = userData.avatar || "??";
-    avatarDiv.classList.add("avatar-logged");
+ else {
+  avatarDiv.textContent = userData.avatar || "??";
+  avatarDiv.classList.add("avatar-logged");
 
-    // Cria botão de logout
-    const logoutBtn = document.createElement("button");
-    logoutBtn.textContent = "Sair";
-    logoutBtn.classList.add("logout");
-    avatarDiv.insertAdjacentElement("afterend", logoutBtn);
+  // Criar botão de logout
+  const logoutBtn = document.createElement("button");
+  logoutBtn.textContent = "Sair";
+  logoutBtn.classList.add("logout");
+  avatarDiv.insertAdjacentElement("afterend", logoutBtn);
 
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("user");
-      window.location.reload();
-    });
-  }
+  logoutBtn.addEventListener("click", () => {
+    // Remove o usuário logado
+    localStorage.removeItem("user");
+    localStorage.removeItem("usuarios");
+    localStorage.removeItem("produtoSelecionado");
+    localStorage.removeItem("carrinho");
+
+    // Opcional: remover itens do carrinho caso use carrinho vinculado ao usuário
+    // localStorage.removeItem("carrinho");
+
+    // Atualiza a página
+    window.location.reload();
+  });
+}
+
 
  
 });

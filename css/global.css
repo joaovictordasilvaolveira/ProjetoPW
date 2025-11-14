@@ -89,7 +89,7 @@ body {
   border: none;
   background: transparent;
   outline: none;
-  color: var(--preto);
+  color: var(--preto); 
   width: 100px;
 }
 
