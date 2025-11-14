@@ -306,7 +306,9 @@ body {
   }
 
   .nav {
-    display: none; /* Esconde o menu para o modo mobile */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Esconde o menu para o modo mobile */
   }
 
   /* Botão hamburguer (caso queira ativar via JS depois) */

@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutBtn.addEventListener("click", () => {
     // Remove o usuário logado
     localStorage.removeItem("user");
-    localStorage.removeItem("usuarios");
     localStorage.removeItem("produtoSelecionado");
     localStorage.removeItem("carrinho");
 
